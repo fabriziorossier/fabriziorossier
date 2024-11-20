@@ -1,0 +1,76 @@
+---
+import Section from '../components/Section.astro';
+import Card from '../components/Card.astro';
+import ContactCard from '../components/ContactCard.astro';
+
+const works = await Astro.glob("../pages/works/*.md")
+const studies = await Astro.glob("../pages/studies/*.md")
+const certificates = await Astro.glob("../pages/certificates/*.md")
+const contact = await Astro.glob("../pages/contact/*.md")
+---
+
+<div class="content mb-auto mx-auto max-w-3xl">
+    <Section title="Experiencia Profesional" icon={"carbon:construction"}>
+		{
+			works.map((item) => {
+				return (
+					<Card
+						title={item.frontmatter.title}
+						org={item.frontmatter.org}
+						date={item.frontmatter.date}
+						description={item.compiledContent()}
+						tags={item.frontmatter.tags}
+					/>
+				);
+			})
+		}
+	</Section>
+
+	<Section title="Educación Superior" icon={"carbon:education"}>
+		{
+			studies.map((item) => {
+				return (
+					<Card
+						title={item.frontmatter.title}
+						org={item.frontmatter.org}
+						date={item.frontmatter.date}
+						description={item.compiledContent()}
+						tags={item.frontmatter.tags}
+					/>
+				);
+			})
+		}
+	</Section>
+
+	<Section title="Certificaciones" icon={"carbon:certificate"}>
+		{
+			certificates.map((item) => {
+				return (
+					<Card
+						title={item.frontmatter.title}
+						org={item.frontmatter.org}
+						date={item.frontmatter.date}
+						description={item.compiledContent()}
+						tags={item.frontmatter.tags}
+					/>
+				);
+			})
+		}
+	</Section>
+
+	<Section title="Contacto" icon={"carbon:location-person"}>
+		<div class="flex flex-wrap content-around gap-4 justify-center">
+			{
+				contact.map((item) => {
+				return (
+					<ContactCard
+					url={item.frontmatter.url}
+					url_name={item.frontmatter.title}
+					icon={item.frontmatter.icon}
+					/>
+				);
+				})
+			}
+		</div>
+	</Section>
+</div>

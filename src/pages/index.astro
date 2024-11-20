@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Container from '../components/Container.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title='Fabrizio Rossier - Ingeniero de Software Full Stack'>
+	<Header />
+
+	<Container />
+
+	<Footer />
+</Layout>
+
+<style is:global>
+	html {
+		max-width: 100%;
+        overflow-x: hidden;
+	}
+
+	body {
+		margin: auto;
+        padding: 1rem;
+        overflow-x: hidden;
+	}
+	
+	h1 {
+		font-size: 2rem;
+	}
+</style>

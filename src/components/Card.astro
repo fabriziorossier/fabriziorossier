@@ -1,0 +1,38 @@
+---
+interface Props {
+	title: string;
+    org: string;
+    date: string;
+    description: string;
+    tags: string[];
+}
+
+const { title, org, date, description, tags } = Astro.props;
+---
+
+<div class="card card-compact card-bordered border border-base-content w-full md:w-112 lg:w-128 hover:shadow-lg transition-all my-4">
+  <div class="card-body">
+    <div class="grid grid-cols-3 gap-4 mb-2">
+      <div class="self-start col-span-3 justify-self-start text-left">
+        <h1 class="uppercase card-title font-extrabold tracking-tighter md:text-2xl">{title}</h1>
+        <h2>{org}</h2>
+        <p>{date}</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-3 gap-4 place-items-center">
+      <div class="self-start col-span-3 justify-self-start text-left">
+        <article class="prose text-base-content text-justify">
+          <Fragment set:html={description}></Fragment>
+        </article>
+        {Array.isArray(tags) && (
+          <div class="flex flex-wrap content-around gap-2 my-4">
+            {tags.map((item) => (
+              <span class="badge text-center inline-block align-middle w-max h-max text-sm badge-outline shadow-md mb-1" :key={item}>{item}</span>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</div>
