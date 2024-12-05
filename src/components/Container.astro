@@ -4,6 +4,7 @@ import Card from '../components/Card.astro';
 import ContactCard from '../components/ContactCard.astro';
 
 const works = await Astro.glob("../pages/works/*.md")
+const projects = await Astro.glob("../pages/projects/*.md")
 const studies = await Astro.glob("../pages/studies/*.md")
 const certificates = await Astro.glob("../pages/certificates/*.md")
 const contact = await Astro.glob("../pages/contact/*.md")
@@ -20,6 +21,26 @@ const contact = await Astro.glob("../pages/contact/*.md")
 						date={item.frontmatter.date}
 						description={item.compiledContent()}
 						tags={item.frontmatter.tags}
+					/>
+				);
+			})
+		}
+	</Section>
+
+	<Section title="Proyectos Personales" icon={"carbon:tools"}>
+		{
+			projects.map((item) => {
+				return (
+					<Card
+						title={item.frontmatter.title}
+						org={item.frontmatter.org}
+						date={item.frontmatter.date}
+						description={item.compiledContent()}
+						tags={item.frontmatter.tags}
+						url_live={item.frontmatter.url_live}
+            			url_live_name={item.frontmatter.url_live_name}
+						url_code={item.frontmatter.url_code}
+						url_code_name={item.frontmatter.url_code_name}
 					/>
 				);
 			})
