@@ -1,13 +1,19 @@
 ---
+import { Icon } from "astro-icon/components";
+
 interface Props {
 	title: string;
-    org: string;
-    date: string;
-    description: string;
-    tags: string[];
+  org: string;
+  date: string;
+  description: string;
+  tags: string[];
+  url_live: string;
+  url_live_name: string;
+	url_code: string;
+	url_code_name: string;
 }
 
-const { title, org, date, description, tags } = Astro.props;
+const { title, org, date, description, tags, url_live, url_live_name, url_code, url_code_name } = Astro.props;
 ---
 
 <div class="card card-compact card-bordered border border-base-content w-full md:w-112 lg:w-128 hover:shadow-lg transition-all my-4">
@@ -18,6 +24,21 @@ const { title, org, date, description, tags } = Astro.props;
         <h2>{org}</h2>
         <p>{date}</p>
       </div>
+    </div>
+
+    <div class="grid grid-cols-3 gap-4 mb-2">   
+      <div class="self-start col-span-3 justify-self-start text-left">
+        <div class="justify-self-start justify-items-start">
+          <a href={url_live} target="_blank" class="link link-hover text-sm text-right flex justify-center items-center">
+            {url_live !== "#" && <Icon name="carbon:link" class="w-4 h-4 mr-2" />}
+            {url_live_name}
+          </a>
+          <a href={url_code} target="_blank" class="link link-hover text-sm text-right flex justify-center items-center">
+            {url_code !== "#" && <Icon name="carbon:link" class="w-4 h-4 mr-2" />}
+            {url_code_name}
+          </a>
+        </div>
+      </div> 
     </div>
 
     <div class="grid grid-cols-3 gap-4 place-items-center">
@@ -34,5 +55,7 @@ const { title, org, date, description, tags } = Astro.props;
         )}
       </div>
     </div>
+
+    
   </div>
 </div>
