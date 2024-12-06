@@ -1,6 +1,7 @@
 ---
 import Section from '../components/Section.astro';
 import Card from '../components/Card.astro';
+import ProjectCard from '../components/ProjectCard.astro';
 import ContactCard from '../components/ContactCard.astro';
 
 const works = await Astro.glob("../pages/works/*.md")
@@ -31,7 +32,7 @@ const contact = await Astro.glob("../pages/contact/*.md")
 		{
 			projects.map((item) => {
 				return (
-					<Card
+					<ProjectCard
 						title={item.frontmatter.title}
 						org={item.frontmatter.org}
 						date={item.frontmatter.date}
